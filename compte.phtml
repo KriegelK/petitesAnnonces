@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte</title>
+</head>
+
+<l>
+    <a href="index.php">Accueil</a>
+    <a href="compte.php">Compte</a>
+    <a href="index.php" method="post">Deconnexion</a>
+    <h1>ANNONCES</h1>
+    <a href="redaction.phtml">Rédiger une annonce</a><br>
+    <?php foreach ($announcements as $announcement) : ?><br>
+        <li><?= $announcement['title'] ?></li><br>
+        <?= $announcement['content'] ?>
+        <?= $announcement['image'] ?><br><br>
+        </table>
+    <?php endforeach; ?>
+
+    </body>
+
+</html>
