@@ -10,7 +10,7 @@ $dbh = new PDO(
 );
 //var_dump($dbh);
 
-var_dump($_FILES);
+//var_dump($_FILES);
 
 //Inserer un fichier
 if (array_key_exists('fichier', $_FILES)) {
@@ -26,7 +26,7 @@ if (array_key_exists('fichier', $_FILES)) {
 //Entrer informations dans BDD
 if (!empty($_POST)) {
     $title = $_POST['title'];
-    $image = $_POST['MAX_FILE_SIZE'];
+    $image = $_FILES['fichier'];
     $content = $_POST['content'];
     $query = 'INSERT INTO announcements(title, image, content) VALUE(?,?,?)';
     $sth = $dbh->prepare($query);
@@ -36,14 +36,14 @@ if (!empty($_POST)) {
 };
 
 if (!empty($_POST)) {
-    $query= 'SELECT user.id
+    $query= 'SELECT id
              FROM users
-             INNER JOIN id ON announcements.idWriter = users.id';
+             INNER JOIN announcements ON announcement.id = announcements.idUser';
     $sth = $dbh -> prepare($query);
     $sth->bindValue($_GET['id'], PDO::PARAM_INT);
     $sth->execute([$announcements]);
     $posts= $sth->fetch();
-    var_dump($announcements);
+    //var_dump($announcements);
     };
 
 include 'redaction.phtml';
