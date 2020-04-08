@@ -10,14 +10,15 @@ $dbh = new PDO(
 );
 //var_dump($dbh);
 
-$query= 'SELECT id, title, image, content, publication_date
-         FROM announcements';
-$sth = $dbh -> query($query);
-$announcements = $sth -> fetchAll();
+//recup informations for announcement in BDD
+$query = 'SELECT id, title, image, content, publication_date
+          FROM announcements';
+$sth = $dbh->query($query);
+$announcements = $sth->fetchAll();
 
 //delete announcement
-$delete = $bdd->prepare('DELETE title
-                         FROM announcements');
-$delete->execute($bdd);
+$query = ' DELETE FROM announcements';
+$sth = $dbh->prepare($query);
+$sth ->execute([]);
 
 include 'compte.phtml';

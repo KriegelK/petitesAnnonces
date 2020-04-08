@@ -35,6 +35,7 @@ if (!empty($_POST)) {
     exit;
 };
 
+//Recup idUser in BDD
 if (!empty($_POST)) {
     $query= 'SELECT id
              FROM users
