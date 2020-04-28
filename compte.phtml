@@ -18,8 +18,8 @@
             <img src="<?= $announcement['image'] ?>"><br><br>
             <?= $announcement['content'] ?><br><br>
             <?= $announcement['publication_date'] ?><br><br>
-            <button type="submit">Modifier</button>
-            <a href="delete.php">Supprimer</a><br><br><br><br>
+            <a href="update.php?id=<?= intval($announcement['id']) ?>"><button>Modifier</button></a>
+            <a href="delete.php?id=<?= intval($announcement['id']) ?>"><button>Supprimer</button></a><br><br><br><br>
     <?php endforeach; ?>
 </body>
 </html>

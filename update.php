@@ -10,7 +10,7 @@ $dbh = new PDO(
 );
 //var_dump($dbh);
 
-//Delete announcements
+//Update announcement
 session_start();
 // Vérifie si le rédacteur est connecté
 if (!array_key_exists('authentification', $_SESSION)) {
@@ -19,11 +19,13 @@ if (!array_key_exists('authentification', $_SESSION)) {
     exit;
 } else {
     if (array_key_exists('id', $_GET) and intval($_GET['id']) > 0) {
-        $query = 'DELETE FROM announcements WHERE id = :id';
+        $query = 'UPDATE FROM announcements
+                  WHERE id = :id';
         $sth = $dbh->prepare($query);
         $sth->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
-        $sth->execute();
+        //$sth->execute('id');
     }
-    header('Location:compte.php');
-    exit;
+    //header('Location:compte.php');
+    //exit;
 }
+include 'update-announcement.phtml';
